@@ -151,10 +151,15 @@ def predict_class(row: List[Any], node: Union[DecisionNode, Leaf]) -> Any:
 def load_data(filename: str, test_size: float = 0.2) -> Tuple[List[List[Any]], List[List[Any]]]:
     """Load and split data into train and test sets."""
     df = pd.read_csv(filename)
+    # features = [
+    #     'Sharpe Ratio', 'PE_ratio', 'EPS_ratio', 'NetProfitMargin_ratio',
+    #     'roe_ratio', 'div_yeild', 'CAGR', 'BuyLabel'
+    # ]
     features = [
-        'Sharpe Ratio', 'PE_ratio', 'EPS_ratio', 'NetProfitMargin_ratio',
-        'roe_ratio', 'div_yeild', 'CAGR', 'BuyLabel'
-    ]
+    'Sharpe Ratio', 'PE_ratio', 'EPS_ratio', 'PS_ratio',
+    'NetProfitMargin_ratio', 'current_ratio', 'roe_ratio',
+    'div_yeild', 'CAGR', 'BuyLabel'
+]
     df = df[features].dropna()
     data = df.values.tolist()
     random.shuffle(data)
@@ -167,7 +172,7 @@ def load_data(filename: str, test_size: float = 0.2) -> Tuple[List[List[Any]], L
 
 #Uncomment to run separately on its own
 
-/*if __name__ == "__main__":
+if __name__ == "__main__":
     from google.colab import files
     
     # Example usage when run directly
@@ -178,11 +183,11 @@ def load_data(filename: str, test_size: float = 0.2) -> Tuple[List[List[Any]], L
     # Build and evaluate a single tree
     tree = build_tree(
         train_data,
-        max_depth=7,
+        max_depth=15, #was 7
         min_samples_split=100,
-        min_samples_leaf=50,
+        min_samples_leaf=20, #was 50
         min_impurity_decrease=0.01,
-        max_features=5
+        max_features=7 #was 5
     )
     
     # Calculate accuracy
@@ -190,4 +195,4 @@ def load_data(filename: str, test_size: float = 0.2) -> Tuple[List[List[Any]], L
     for row in test_data:
         if predict_class(row[:-1], tree) == row[-1]:
             correct += 1
-    print(f"Test Accuracy: {correct / len(test_data):.2%}")*/
+    print(f"Test Accuracy: {correct / len(test_data):.2%}")
