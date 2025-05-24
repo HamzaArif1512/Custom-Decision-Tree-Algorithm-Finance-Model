@@ -6,7 +6,6 @@ from decisionTree import build_tree, predict_class
 from joblib import Parallel, delayed
 from tqdm import tqdm
 
-
 # Parameters
 
 # TOTAL_TREES = 2000            # Increase number of trees to enhance diversity
