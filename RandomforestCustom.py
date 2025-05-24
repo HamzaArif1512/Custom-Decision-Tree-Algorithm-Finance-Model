@@ -6,6 +6,7 @@ from decisionTree import build_tree, predict_class
 from joblib import Parallel, delayed
 from tqdm import tqdm
 
+
 # Parameters
 
 # TOTAL_TREES = 2000            # Increase number of trees to enhance diversity
@@ -17,6 +18,15 @@ from tqdm import tqdm
 # MAX_FEATURES = 1            # Reduce features considered at each split to 30% for more randomness
 # 68.01 2000(4)
 
+# TOTAL_TREES = 5000            # Increase number of trees to enhance diversity
+# ROWS_PER_TREE = 1500          # Further reduce data per tree for more randomness
+# MAX_DEPTH = 10                # Shallow depth for better generalization (8-12)
+# MIN_SAMPLES_SPLIT = 30        # Allow more splits by reducing samples per split
+# MIN_SAMPLES_LEAF = 1          # Smaller leaf nodes for better capturing of patterns
+# MIN_IMPURITY_DECREASE = 0.01   # Require a larger decrease in impurity for splits
+# MAX_FEATURES = 1           # Reduce features considered at each split to 30% for more randomness
+# 98.03 4.0: 4832, 3.0: 74, 1.0: 70, 2.0: 24
+
 TOTAL_TREES = 2000            # Increase number of trees to enhance diversity
 ROWS_PER_TREE = 1500          # Further reduce data per tree for more randomness
 MAX_DEPTH = 10                # Shallow depth for better generalization (8-12)
@@ -25,6 +35,7 @@ MIN_SAMPLES_LEAF = 1          # Smaller leaf nodes for better capturing of patte
 MIN_IMPURITY_DECREASE = 0.01   # Require a larger decrease in impurity for splits
 MAX_FEATURES = 1            # Reduce features considered at each split to 30% for more randomness
 # 98.03 4.0: 1930, 1.0: 32, 3.0: 29, 2.0: 9
+
 
 
 # Data Loading Functions
