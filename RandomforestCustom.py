@@ -6,27 +6,7 @@ from decisionTree import build_tree, predict_class
 from joblib import Parallel, delayed
 from tqdm import tqdm
 
-# =============================
 # Parameters
-# =============================
-
-# TOTAL_TREES = 500
-# ROWS_PER_TREE = 5000
-# MAX_DEPTH = 15 # was 30
-# MIN_SAMPLES_SPLIT = 50 # was 200
-# MIN_SAMPLES_LEAF = 10 # was 30
-# MIN_IMPURITY_DECREASE = 0.0 #was 0.0025
-# MAX_FEATURES = 2  # out of 9 ratio features
-# 99.06 
-
-# TOTAL_TREES = 1000             # Increase number of trees for more robustness
-# ROWS_PER_TREE = 3000           # Reduce the data per tree to encourage variance
-# MAX_DEPTH = 10                 # Limit depth to avoid overfitting
-# MIN_SAMPLES_SPLIT = 30         # Allow more splits, making the model more sensitive
-# MIN_SAMPLES_LEAF = 5           # Ensure smaller leaf nodes for better generalization
-# MIN_IMPURITY_DECREASE = 0.01   # Increase impurity decrease threshold to avoid unnecessary splits
-# MAX_FEATURES = 1               # Max features per split to increase randomness
-# 98.34
 
 # TOTAL_TREES = 2000            # Increase number of trees to enhance diversity
 # ROWS_PER_TREE = 1500          # Further reduce data per tree for more randomness
@@ -45,24 +25,6 @@ MIN_SAMPLES_LEAF = 1          # Smaller leaf nodes for better capturing of patte
 MIN_IMPURITY_DECREASE = 0.01   # Require a larger decrease in impurity for splits
 MAX_FEATURES = 1            # Reduce features considered at each split to 30% for more randomness
 # 98.03 4.0: 1930, 1.0: 32, 3.0: 29, 2.0: 9
-
-# TOTAL_TREES = 2000            # Increase number of trees to enhance diversity
-# ROWS_PER_TREE = 1500          # Further reduce data per tree for more randomness
-# MAX_DEPTH = 10                # Shallow depth for better generalization (8-12)
-# MIN_SAMPLES_SPLIT = 10        # Allow more splits by reducing samples per split
-# MIN_SAMPLES_LEAF = 1          # Smaller leaf nodes for better capturing of patterns
-# MIN_IMPURITY_DECREASE = 0.01   # Require a larger decrease in impurity for splits
-# MAX_FEATURES = 1           # Reduce features considered at each split to 30% for more randomness
-# 98.62 4.0: 1921, 3.0: 36, 1.0: 25, 2.0: 18
-
-# TOTAL_TREES = 5000            # Increase number of trees to enhance diversity
-# ROWS_PER_TREE = 1500          # Further reduce data per tree for more randomness
-# MAX_DEPTH = 10                # Shallow depth for better generalization (8-12)
-# MIN_SAMPLES_SPLIT = 30        # Allow more splits by reducing samples per split
-# MIN_SAMPLES_LEAF = 1          # Smaller leaf nodes for better capturing of patterns
-# MIN_IMPURITY_DECREASE = 0.01   # Require a larger decrease in impurity for splits
-# MAX_FEATURES = 1           # Reduce features considered at each split to 30% for more randomness
-# 98.03 4.0: 4832, 3.0: 74, 1.0: 70, 2.0: 24
 
 
 # Data Loading Functions
