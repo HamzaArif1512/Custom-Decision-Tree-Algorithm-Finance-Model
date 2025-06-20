@@ -43,10 +43,8 @@ The model fetches real-time data from financial APIs, computes key ratios like S
 
 1. **Clone the repository:**
 
-   ```bash
    git clone https://github.com/HamzaArif1512/Custom-Decision-Tree-Algorithm-Finance-Model.git
    cd Custom-Decision-Tree-Algorithm-Finance-Model
-````
 
 2. **Install dependencies:**
 
@@ -58,9 +56,7 @@ The model fetches real-time data from financial APIs, computes key ratios like S
 
    Create a `.env` file in the root directory and add:
 
-   ```
    ALPHA_VANTAGE_API_KEY=your_key_here
-   ```
 
 ---
 
