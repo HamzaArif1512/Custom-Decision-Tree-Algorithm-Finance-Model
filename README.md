@@ -8,19 +8,19 @@ The model fetches real-time data from financial APIs, computes key ratios like S
 
 ## Project Structure
 
-- `decisionTree.py`: Implements a custom decision tree classifier from scratch, including Gini impurity, pre-pruning, and prediction.
-- `RandomforestCustom.py`: Builds a random forest of decision trees with bootstrap sampling, parallelism (`joblib`), and ensemble voting.
-- `stock_agent.py`: Full pipeline for fetching financial data (via Alpha Vantage and Yahoo Finance), preprocessing, feature engineering, and final stock prediction.
-- `train_refined.csv` & `test_refined.csv`: Training and test data extracted and refined from Kaggle financial datasets.
+- `decisionTree.py`: Custom decision tree classifier from scratch, with Gini impurity, pre-pruning, and prediction.
+- `RandomforestCustom.py`: Builds a random forest using bootstrap sampling, parallelism (`joblib`), and majority voting.
+- `stock_agent.py`: Full pipeline for data fetching (Alpha Vantage + Yahoo Finance), feature engineering, and prediction.
+- `train_refined.csv` & `test_refined.csv`: Refined training/test datasets sourced from Kaggle.
 
 ---
 
 ## Features
 
 - End-to-end stock prediction using real financial data
-- Custom Decision Tree implementation (no `sklearn`)
-- Random Forest built from scratch using parallel processing
-- Feature engineering with:
+- No use of scikit-learn; all algorithms are implemented from scratch
+- Parallel tree construction for faster forest training
+- Feature engineering includes:
   - PE Ratio
   - EPS
   - PS Ratio
@@ -29,31 +29,34 @@ The model fetches real-time data from financial APIs, computes key ratios like S
   - Net Profit Margin
   - Current Ratio
   - CAGR
-  - Sharpe Ratio (computed from recent prices)
-- Caching of API results to reduce rate limits and reuse data
-- Labels:
-  - 1 = Short Buy
-  - 2 = Long Term (Capital Gain)
-  - 3 = Long Buy (Dividend)
-  - 4 = Don’t Buy
+  - Sharpe Ratio (calculated)
+- Caching to handle API rate limits efficiently
+- Four prediction labels:
+  - `1`: Short Buy  
+  - `2`: Long Term (Capital Gain)  
+  - `3`: Long Buy (Dividend)  
+  - `4`: Don't Buy
 
 ---
 
 ## Installation
 
-1. Clone the repository:
+1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/HamzaArif1512/Custom-Decision-Tree-Algorithm-Finance-Model.git
    cd Custom-Decision-Tree-Algorithm-Finance-Model
 ````
 
-2. Install the dependencies:
+2. **Install dependencies:**
 
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Set your [Alpha Vantage API Key](https://www.alphavantage.co/) in a `.env` file:
+3. **Set up your Alpha Vantage API key:**
+
+   Create a `.env` file in the root directory and add:
 
    ```
    ALPHA_VANTAGE_API_KEY=your_key_here
@@ -63,15 +66,15 @@ The model fetches real-time data from financial APIs, computes key ratios like S
 
 ## Usage
 
-### Training and Evaluation
+### Train and Evaluate the Model
 
-To train the Random Forest and evaluate it:
+To train the Random Forest and evaluate its accuracy:
 
 ```bash
 python RandomforestCustom.py
 ```
 
-### Real-Time Stock Prediction
+### Predict Stock Recommendation
 
 To get a prediction for a specific stock (e.g., AAPL):
 
@@ -79,18 +82,17 @@ To get a prediction for a specific stock (e.g., AAPL):
 python stock_agent.py AAPL
 ```
 
-The model will:
+This script will:
 
-* Download stock prices using `yfinance`
-* Fetch financial ratios using Alpha Vantage
-* Cache and reuse results
-* Predict a class using the ensemble forest
+* Fetch recent stock prices and financial ratios
+* Cache the data for future use
+* Predict a recommendation using a trained random forest
 
 ---
 
 ## Model Parameters
 
-The forest uses:
+The default hyperparameters used in the forest:
 
 * `TOTAL_TREES = 2000`
 * `ROWS_PER_TREE = 1500`
@@ -99,8 +101,6 @@ The forest uses:
 * `MIN_SAMPLES_LEAF = 1`
 * `MIN_IMPURITY_DECREASE = 0.01`
 * `MAX_FEATURES = 1`
-
-These hyperparameters were tuned empirically for generalization.
 
 ---
 
@@ -129,10 +129,10 @@ Model Accuracy: 98.03%
 
 ## Credits
 
-This project was created by:
+Project created by:
 
 * **Hamza Arif**
 * **Haris Khalid**
 * **Raahin Tajuddin**
 
-As part of our final assignment in the **Introduction to Artificial Intelligence** course, we implemented the full pipeline from algorithm to API integration and prediction.
+This project was developed as part of the final assignment for the **Introduction to Artificial Intelligence** course.
